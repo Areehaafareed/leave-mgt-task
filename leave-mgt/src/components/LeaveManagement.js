@@ -1,12 +1,13 @@
 
 import React, { useState } from 'react';
 import { Card, Table } from 'react-bootstrap';
-import { FaBell, FaCheckCircle, FaTimesCircle, FaBabyCarriage, FaCircle } from 'react-icons/fa';
+import { FaBell, FaCheckCircle, FaTimesCircle, FaBabyCarriage, FaCircle, FaChartBar } from 'react-icons/fa';
 import LeaveRequestModal from './LeaveRequestModal';
+import CircularProgress from '@mui/material/CircularProgress';
 
 const LeaveManagement = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
-  
+
     const handleOpenModal = () => {
         setIsModalOpen(true);
         document.body.style.backgroundColor = 'rgba(0, 0, 0, 0.5)'; // Black color with 50% opacity
@@ -50,6 +51,22 @@ const LeaveManagement = () => {
         <FaCircle style={{ color, marginRight: '5px', fontSize: '10px' }} />
     );
 
+    const getColor = (status) => {
+        switch (status) {
+            case 'Pending':
+                return '#FFA500'; // Orange color
+            case 'Granted':
+                return '#00FF00'; // Green color
+            case 'Rejected':
+                return '#FF0000'; // Red color
+            case 'Maternity':
+                return '#0000FF'; // Blue color
+            default:
+                return '#000000'; // Black color (fallback)
+        }
+    };
+
+
     return (
         <div className="container mt-4">
             <h2 className="mb-4 text-center shadow">Leave Management</h2>
@@ -76,8 +93,8 @@ const LeaveManagement = () => {
                     <div className="col-md-3" key={index}>
                         <Card className="text-center" style={{ boxShadow: '0px 0px 10px 5px rgba(0,0,0,0.3)' }}>
                             <Card.Body>
-                                <h4>{status} Leave Requests</h4>
-                                <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>
+                                <h5>{status} Leave Requests</h5>
+                                <div style={{ fontSize: '2rem', marginBottom: '1rem' }}>
                                     {statusIcons[status]}
                                 </div>
                                 <h5>{leavesData.filter(leave => leave.status === status).length}</h5>
@@ -85,7 +102,11 @@ const LeaveManagement = () => {
                         </Card>
                     </div>
                 ))}
+
             </div>
+
+
+           
 
             <Table striped bordered hover size="sm" style={{ boxShadow: '0px 0px 10px 5px rgba(0,0,0,0.3)' }}>
                 <thead>
