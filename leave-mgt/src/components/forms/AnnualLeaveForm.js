@@ -38,7 +38,7 @@ const AnnualLeaveForm = () => {
             <label htmlFor="reason" className="form-label">Reason</label>
             <textarea className="form-control" id="reason" rows="3" value={reason} onChange={(e) => setReason(e.target.value)}></textarea>
           </div>
-          <button type="submit" className="btn btn-primary">Submit</button>
+          <button type="submit" className="btn btn-warning">Submit</button>
         </form>
       </div>
     );

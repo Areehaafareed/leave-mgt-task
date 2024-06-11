@@ -68,9 +68,11 @@ const LeaveManagement = () => {
 
 
     return (
-        <div className="container mt-4">
-            <h2 className="mb-4 text-center shadow">Leave Management</h2>
-            <button className="btn mb-3" style={{ backgroundColor: '#FFD700', borderColor: '#FFD700' }} onClick={handleOpenModal}>
+        <div className="container mt-4" >
+             <div clasName = " mt-2 mb-4" style={{boxShadow: '0px 0px 10px 5px rgba(0,0,0,0.3)',  padding: '3px'  }}>
+    <h2 className=" text-center" style={{ color: '#000000', textShadow: '2px 2px 4px #FFA500' }}>Leave Management</h2>
+  </div>
+            <button className="btn mb-3 mt-3" style={{ backgroundColor: '#FFA500', borderColor: '#FFA500' }} onClick={handleOpenModal}>
                 Add Leave Request
             </button>
             {isModalOpen && (
